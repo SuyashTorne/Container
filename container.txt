@@ -1,0 +1,20 @@
+sudo su
+apt-get update -y
+apt-get install docker.io
+docker -v
+service docker start
+docker run -it --name dreametive -p 9000:80 ubuntu:18.04 /bin/bash
+exit
+docker container ls -a
+docker container start 809b15a24e5b
+docker container exec -it dreametive /bin/bash
+apt-get update -y
+apt-get install apache2 -y
+service apache2 start
+apt-get install net-tools -y
+exit
+docker container stop dreametive
+docker container ls -a
+docker container start dreametive
+docker commit dreametive ash
+docker image ls
